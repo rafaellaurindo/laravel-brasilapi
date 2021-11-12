@@ -65,7 +65,7 @@ use BrasilApi;
 BrasilApi::cep('01431000');
 ```
 
-### Get brazilian banks list:
+### Get Brazilian banks list:
 
 ```php
 BrasilApi::getBanks();

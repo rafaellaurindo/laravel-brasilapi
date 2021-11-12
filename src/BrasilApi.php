@@ -38,7 +38,7 @@ class BrasilApi
     }
 
     /**
-     * Returns a list of brazilian banks.
+     * Returns a list of Brazilian banks.
      *
      * @link https://brasilapi.com.br/docs#tag/BANKS
      *
