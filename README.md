@@ -18,7 +18,7 @@ composer require rafaellaurindo/laravel-brasilapi
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --provider="RafaelLaurindo\BrasilApi\BrasilApiServiceProvider" --tag="config""
+php artisan vendor:publish --provider="RafaelLaurindo\BrasilApi\BrasilApiServiceProvider" --tag="config"
 ```
 
 ## Usage
@@ -26,10 +26,13 @@ php artisan vendor:publish --provider="RafaelLaurindo\BrasilApi\BrasilApiService
 ### Searching for an address using CEP:
 
 ```php
-$address = app(BrasilApi::class)->cep('01431000');
-
-// Or Using helper
+// Using helper
 $address = brasilApi()->cep('01431000');
+
+// Or using Facade
+use BrasilApi;
+
+$address = BrasilApi::cep('01431000');
 ```
 
 ## Testing
