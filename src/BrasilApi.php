@@ -26,6 +26,8 @@ class BrasilApi
     /**
      * Search address using CEP.
      *
+     * @link https://brasilapi.com.br/docs#tag/CEP-V2
+     *
      * @param  string  $cep
      * @return object
      * @throws \Illuminate\Http\Client\RequestException
@@ -38,6 +40,8 @@ class BrasilApi
     /**
      * Returns a list of brazilian banks.
      *
+     * @link https://brasilapi.com.br/docs#tag/BANKS
+     *
      * @return array
      * @throws \Illuminate\Http\Client\RequestException
      */
@@ -48,6 +52,8 @@ class BrasilApi
 
     /**
      * Get a bank from code.
+     *
+     * @link https://brasilapi.com.br/docs#tag/BANKS
      *
      * @param  int  $code
      * @return array
@@ -62,6 +68,7 @@ class BrasilApi
      * Find company information using the CNPJ.
      *
      * @link https://brasilapi.com.br/docs#tag/CNPJ
+     *
      * @param  string  $cnpj
      * @return array
      * @throws \Illuminate\Http\Client\RequestException
