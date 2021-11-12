@@ -8,9 +8,11 @@ class BrasilApiServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../config/brasil-api.php' => config_path('brasil-api.php'),
-        ], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/brasil-api.php' => config_path('brasil-api.php'),
+            ], 'config');
+        }
     }
 
     public function register(): void
