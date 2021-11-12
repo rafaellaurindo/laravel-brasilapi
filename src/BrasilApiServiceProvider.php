@@ -19,7 +19,11 @@ class BrasilApiServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/brasil-api.php', 'brasil-api');
 
-        $this->app->singleton(BrasilApi::class, fn () => new BrasilApi(config('brasil-api.base_url')));
+        $this->app->singleton(BrasilApi::class, fn () => new BrasilApi(
+            baseUrl: config('brasil-api.base_url'),
+            cepVersion: config('brasil-api.cep_version')
+        ));
+
         $this->app->alias(BrasilApi::class, 'laravel-brasilapi');
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class BrasilApi
 {
-    public function __construct(private string $baseUrl)
+    public function __construct(private string $baseUrl, private string $cepVersion)
     {
     }
 
@@ -32,6 +32,6 @@ class BrasilApi
      */
     public function cep(string $cep): object
     {
-        return $this->apiClient()->get("/cep/v2/$cep")->throw()->object();
+        return $this->apiClient()->get("/cep/$this->cepVersion/$cep")->throw()->object();
     }
 }
