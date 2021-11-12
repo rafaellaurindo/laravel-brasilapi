@@ -57,4 +57,17 @@ class BrasilApi
     {
         return $this->apiClient()->get("/banks/v1/$code")->throw()->json();
     }
+
+    /**
+     * Find company information using the CNPJ.
+     *
+     * @link https://brasilapi.com.br/docs#tag/CNPJ
+     * @param  string  $cnpj
+     * @return array
+     * @throws \Illuminate\Http\Client\RequestException
+     */
+    public function findCnpj(string $cnpj): array
+    {
+        return $this->apiClient()->get("/cnpj/v1/$cnpj")->throw()->json();
+    }
 }
