@@ -1,6 +1,6 @@
 {
   "name": "rafaellaurindo/laravel-brasilapi",
-  "description": "Laravel Wrapper for Brasil API",
+  "description": "A Laravel package that provides a simple way to use the Brasil API endpoints",
   "keywords": [
     "rafaellaurindo",
     "laravel",

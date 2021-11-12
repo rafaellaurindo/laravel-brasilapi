@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/rafaellaurindo/laravel-brasilapi/Check%20&%20fix%20styling?label=code%20style)](https://github.com/rafaellaurindo/laravel-brasilapi/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/rafaellaurindo/laravel-brasilapi.svg?style=flat-square)](https://packagist.org/packages/rafaellaurindo/laravel-brasilapi)
 
-Provides a Laravel wrapper for [Brasil API](https://brasilapi.com.br/).
+A Laravel package that provides a simple way to use the [Brasil API](https://brasilapi.com.br/) endpoints.
 
 ## Installation
 
@@ -23,16 +23,64 @@ php artisan vendor:publish --provider="RafaelLaurindo\BrasilApi\BrasilApiService
 
 ## Usage
 
-### Searching for an address using CEP:
+You can use the methods from `Dependency Injection`, `Facade` or `helper`.
+
+Using from Dependency Injection:
 
 ```php
-// Using helper
-$address = brasilApi()->cep('01431000');
+use RafaelLaurindo\BrasilApi\BrasilApi;
 
-// Or using Facade
+class ExampleController
+{
+    public function searchZipCode(BrasilApi $brasilApi)
+    {
+        return response()->json($brasilApi->cep('01431000'));
+    }
+}
+```
+
+Using from Facade:
+
+```php
 use BrasilApi;
 
-$address = BrasilApi::cep('01431000');
+BrasilApi::cep('01431000');
+```
+
+Using from helper:
+
+```php
+brasilApi()->getBank(77);
+```
+
+After you've installed the package. All the following examples use the facade. Don't forget to import it at the top of your file.
+
+```php
+use BrasilApi;
+```
+
+### Searching address by zip code:
+
+```php
+BrasilApi::cep('01431000');
+```
+
+### Get brazilian banks list:
+
+```php
+BrasilApi::getBanks();
+```
+
+### Get a bank from code:
+
+```php
+BrasilApi::getBank(77);
+```
+
+### Find company information using the CNPJ:
+
+```php
+BrasilApi::findCnpj('19131243000197');
 ```
 
 ## Testing
