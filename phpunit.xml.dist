@@ -22,6 +22,9 @@
         <testsuite name="Brasil API Feature Test Suite">
             <directory>tests/Feature</directory>
         </testsuite>
+        <testsuite name="Brasil API Unit Test Suite">
+            <directory>tests/Unit</directory>
+        </testsuite>
     </testsuites>
     <coverage>
         <include>

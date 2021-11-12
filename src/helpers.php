@@ -4,9 +4,9 @@ use RafaelLaurindo\BrasilApi\BrasilApi;
 
 if (! function_exists('brasilApi')) {
     /**
-     * Helper to get a Brasil Api instance.
+     * Returns a Brasil Api instance.
      *
-     * @return \RafaelLaurindo\BrasilApi\BrasilApi
+     * @return BrasilApi
      */
     function brasilApi(): BrasilApi
     {
