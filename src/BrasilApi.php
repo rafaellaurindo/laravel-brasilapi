@@ -34,4 +34,27 @@ class BrasilApi
     {
         return $this->apiClient()->get("/cep/$this->cepVersion/$cep")->throw()->object();
     }
+
+    /**
+     * Returns a list of brazilian banks.
+     *
+     * @return array
+     * @throws \Illuminate\Http\Client\RequestException
+     */
+    public function getBanks(): array
+    {
+        return $this->apiClient()->get("/banks/v1")->throw()->json();
+    }
+
+    /**
+     * Get a bank from code.
+     *
+     * @param  int  $code
+     * @return array
+     * @throws \Illuminate\Http\Client\RequestException
+     */
+    public function getBank(int $code): array
+    {
+        return $this->apiClient()->get("/banks/v1/$code")->throw()->json();
+    }
 }
