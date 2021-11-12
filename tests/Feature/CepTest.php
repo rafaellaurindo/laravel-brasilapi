@@ -27,7 +27,7 @@ class CepTest extends TestCase
             config('brasil-api.base_url') . "/cep/v1/$fakeCep" => Http::response($fakeResponse),
         ]);
 
-        $this->assertEquals(json_decode(json_encode($fakeResponse)), brasilApi()->cep($fakeCep));
+        $this->assertEquals($fakeResponse, brasilApi()->cep($fakeCep));
     }
 
     public function test_it_should_get_an_address_by_cep()
@@ -53,6 +53,6 @@ class CepTest extends TestCase
             config('brasil-api.base_url') . "/cep/v2/$fakeCep" => Http::response($fakeResponse),
         ]);
 
-        $this->assertEquals(json_decode(json_encode($fakeResponse)), brasilApi()->cep($fakeCep));
+        $this->assertEquals($fakeResponse, brasilApi()->cep($fakeCep));
     }
 }

@@ -29,12 +29,12 @@ class BrasilApi
      * @link https://brasilapi.com.br/docs#tag/CEP-V2
      *
      * @param  string  $cep
-     * @return object
+     * @return array
      * @throws \Illuminate\Http\Client\RequestException
      */
-    public function cep(string $cep): object
+    public function cep(string $cep): array
     {
-        return $this->apiClient()->get("/cep/$this->cepVersion/$cep")->throw()->object();
+        return $this->apiClient()->get("/cep/$this->cepVersion/$cep")->throw()->json();
     }
 
     /**
