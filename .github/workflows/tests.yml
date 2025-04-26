@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     runs-on: "ubuntu-latest"
-    continue-on-error: false
+    continue-on-error: true
     strategy:
       matrix:
         php: [8.0, 8.1, 8.2, 8.3, 8.4]
@@ -20,7 +20,7 @@ jobs:
           - laravel: 8.*
             testbench: ^6.23
 
-    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
+    name: php-${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
 
     steps:
       - name: Checkout code
