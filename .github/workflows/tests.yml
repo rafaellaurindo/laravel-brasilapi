@@ -19,6 +19,8 @@ jobs:
         laravel: [8.*, 9.*]
         testbench: [^6.23, ^v7.0]
         exclude:
+          - laravel: 8.*
+            testbench: ^7.0
           - laravel: 9.*
             testbench: ^6.23
 
