@@ -32,6 +32,9 @@ jobs:
             testbench: ^6.23
 
           - laravel: 10.*
+            testbench: ^7.0
+
+          - laravel: 10.*
             testbench: ^6.23
 
           - php: 8.2
