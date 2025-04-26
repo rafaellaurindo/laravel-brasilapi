@@ -1,0 +1,63 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  tests-on-phpunit-10:
+    runs-on: "ubuntu-latest"
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        php:
+          - 8.0
+          - 8.1
+          - 8.2
+          - 8.3
+          - 8.4
+        phpunit:
+          - "~11.5.3"
+          - "~12.0.0"
+          - "~12.1.0"
+        dependencies:
+          - "highest"
+          - "lowest"
+        experimental:
+          - false
+        exclude:
+          - php: 8.2
+            phpunit: "~12.0.0"
+          - php: 8.2
+            phpunit: "~12.1.0"
+
+    name: PHP:${{ matrix.php }} / PHPUnit:${{ matrix.phpunit }} ${{ matrix.dependencies == 'highest' && '⬆️' || '⬇️' }}
+
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, mysql, mysqli, pdo_mysql, bcmath, intl, fileinfo
+          coverage: none
+
+      - name: Install dependencies
+        uses: "ramsey/composer-install@v3"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
+          composer-options: "--no-cache --with=phpunit/phpunit:${{ matrix.phpunit }}"
+
+      - name: Installed dependencies
+        run: |
+          composer show -D
+
+      - name: Execute tests
+        run: composer run test
+        env:
+          RAY_ENABLED: false
