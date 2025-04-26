@@ -16,11 +16,17 @@ jobs:
       matrix:
         php: [8.0, 8.1, 8.2, 8.3, 8.4]
         stability: [prefer-lowest, prefer-stable]
+        laravel: [8.*]
         include:
-          - laravel: 8.*
-            testbench: ^6.23
+            - testbench: ^6.23
+        exclude:
+          - php: 8.3
+            laravel: 8.*
 
-    name: php-${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
+          - php: 8.4
+            laravel: 8.*
+
+    name: PHP:${{ matrix.php }} - Laravel:{{ matrix.laravel }} - ${{ matrix.stability }}
 
     steps:
       - name: Checkout code
